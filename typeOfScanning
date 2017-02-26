@@ -1,0 +1,46 @@
+
+################################################## TYPE OF PORT SCANNING ##################################################
+
+#-	Scansione di connessione TCP Questo tipo di scansione effettuala connessione alla porta bersaglio e completa un handshaking a tre vie (SYN, SYN/ACK, ACK).
+# A causa dell  handshaking a tre vie, questo tipo di scansione richiede piu tempo delle altre ed e maggiormente soggetto ad essere rilevato e registrato nei log del sistema bersaglio.
+# La scansione di connessione TCP e del tutto accessibile senza alcuna necessita di livelli di autorizzazione particolari,  quindi potrebbe anche non essere eseguita come root.
+
+
+#- 	Scansione SYN TCP  Tecnica chiamata semiaperta perche non viene stabilita una connessione TCP completa, ma ci si limita a inviare un pacchetto SYN alla porta bersaglio.
+#Se si riceve un SYN/ACK dalla porta bersaglio allora si puo dedurre che tale porta ee in ascolto nello stato di listening , mentre un RST/ACK solitamente indica che la porta non ee in ascolto.
+#Tecnica vantaggio di essere meno facile da rilevare di una connessione TCP completa, e potrebbe non essere registrata nel sistema bersaglio; tuttavia uno degli svantaggi , e che questa forma di scansione puo
+# produrre una condizione di indisponibilita del servizio sul bersaglio aprendo un gran numero di connessioni semiaperte. Comunque a meno di non effettuare una scansione come questa con un alto numero di connessioni
+# sullo stesso bersaglio la tecnica e sicura.
+#( https://it.wikipedia.org/wiki/SYN_scan )
+
+#-	Scansione FIN TCP Questa tecnica invia un pacchetto FIN alla porta bersaglio. In base all RFC 793, il sistema bersaglio dovrebbe restituire un RST per tutte le porte chiuse.
+# Questa tecnica solitamente funziona su stack TCP/IP basati su UNIX, poiche le altre rispondono cmq sempre con un pacchetto RST. ( https://it.wikipedia.org/wiki/FIN_scan)
+
+
+#- 	Scansione Xmas Tree TCP Questa tecnica invia un pacchetto FIN, URG e PUSH alla porta bersaglio. E in base all  RFC 793, il sistema bersaglio dovrebbe rispondere con un RST per tutte le porte chiuse.
+# ( https://it.wikipedia.org/wiki/XMAS_scan)
+
+#- 	Scansione Null TCP Questa tecnica disattiva tutti i flag. Il sistema bersaglio dovrebbe rispondere con un RST per tutte le porte chiuse. ( https://it.wikipedia.org/wiki/NULL_scan )
+
+
+#-	Scansione ACK TCP Questa tecnica e usata per mappare i ruleset dei firewall (regole per accedere a Internet per ogni applicazione). Puo aiutare a determinare se il firewall e un semplice filtro di
+# pacchetti che consente solo connessioni con il bit ACK impostato, oppure un firewall con controllo sullo stato che opera un filtro avanzato.
+# Si invia un pacchetto ACK al bersaglio se allo scadere del timeout non si e ancora ricevuto niente si deduce che la porta e filtrata.
+# Mentre se viene ricevuto e siccome non ha una connessione attiva il bersaglio invia un pacchetto RST o FIN
+#per indicare di chiudere la connessione.( https://it.wikipedia.org/wiki/ACK_scan )
+
+
+#- 	Scansione di finestre TCP Questa tecnica potrebbe rilevare le porte aperte anche filtrate/ non filtrate su alcuni sistemi ( per esempio AIX e FreeBSD)
+# a causa di una anomalia nel modo in cui e riportata la dimensione della finestra TCP.
+
+
+#-	Scansione RPC TCP Tecnica specifica per i sistemi UNIX ed e utilizzata per individuare le porte RPC (Remote Procedure Call) e i programmi associati con i numeri di versione (elaborazioni remote).
+
+
+
+
+#- 	Scansione UDP Questa tecnica invia un pacchetto UDP alla porta bersaglio; se questa risponde con un messaggio di porta ICMP irraggiungibile, significa che e chiusa ;
+# viceversa se non si riceve questo messaggio si puo dedurre che la porta e aperta. Poiche UDP e un protocollo privo di informazioni sullo stato ,
+# l accuratezza di questa tecnica e altamanete dipendente da tanti fattori correlati all utilizzo e al meccanismo di filtro della rete bersaglio.
+# Inoltre e un processo molto lento se si cerca di applicarlo a un dispositivo che impiega un meccanismo di filtro dei pacchetti avanzato. Su Internet si potrebbero ricevere risultati inaffidabili con questa tecnica.
+
