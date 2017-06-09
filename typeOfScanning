@@ -1,5 +1,4 @@
-
-################################################## TYPE OF PORT SCANNING ##################################################
+################################################### TYPE OF PORT SCANNING ##################################################
 
 #-	Scansione di connessione TCP Questo tipo di scansione effettuala connessione alla porta bersaglio e completa un handshaking a tre vie (SYN, SYN/ACK, ACK).
 # A causa dell  handshaking a tre vie, questo tipo di scansione richiede piu tempo delle altre ed e maggiormente soggetto ad essere rilevato e registrato nei log del sistema bersaglio.
