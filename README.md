@@ -6,3 +6,5 @@ Type Of Attack
 - ACK
 - XmasTREE
 - NULL
+
+See file typeOfScanning for information
