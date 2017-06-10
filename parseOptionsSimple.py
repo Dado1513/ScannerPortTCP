@@ -2,6 +2,14 @@ import getopt
 import sys
 import configurationScannerTCP
 
+# vettore di stringhe per evitare type di attacchi non riconosciuti
+tipoAttacchi=["SYN","FIN/ACK","ACK","XmasTREE","NULL"]
+# type SYN
+# type FIN/ACK
+# type ACK
+# type XmasTREE
+# type NULL
+
 
 def help():
     print """
@@ -12,17 +20,12 @@ def help():
 
         [usage] sudo python -p PORT --type=typeOfAttack <target>
 
-    """
+        type:
+        {}
+    """.format(tipoAttacchi)
 
 
 
-# vettore di stringhe per evitare type di attacchi non riconosciuti
-tipoAttacchi=["SYN","FIN/ACK","ACK","XmasTREE","NULL"]
-# type SYN
-# type FIN/ACK
-# type ACK
-# type XmasTREE
-# type NULL
 
 
 # p seguito dalle porte che si vogliono interrogare
