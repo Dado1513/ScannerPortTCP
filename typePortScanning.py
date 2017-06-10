@@ -115,7 +115,7 @@ def scanningXmasTree(destinazione,porta):
             #allora l index [TCP] non esiste ho rivenuto tre pacchetti di qui uno TCPerror
             if(response[TCPerror].flags==41):
                 # la porta e filtrata
-                return False
+                return True
         # filtrata
         return False
     else:
