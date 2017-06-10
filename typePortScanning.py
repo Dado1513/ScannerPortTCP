@@ -1,8 +1,8 @@
 from scapy.all import *
 import configurationScannerTCP
 import threading
+import Queue
 import parseOptionsSimple
-
 result={}
 
 # type of richiesta ->
