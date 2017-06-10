@@ -57,13 +57,19 @@ def scanningFin(destinazione,porta):
            : False se la porta e chiusa
     """
 
-    response = sr1(IP(dst=destinazione) / TCP(dport=porta, flags="F"), verbose=False, timeout=0.2);
+    response = sr1(IP(dst=destinazione) / TCP(dport=porta, flags="F"), timeout=0.2);
     if(response):
-        if(response[TCP].flags==20 or response[TCP].flags==4):
-            # porta quasi sicuramente chiusa
-            return False
-        else:
-            return True
+        try:
+            if(response[TCP].flags==20 or response[TCP].flags==4):
+                # porta quasi sicuramente chiusa
+                return False
+            else:
+                return True
+        except IndexError:
+            if(response[TCPerror].flags==41):
+                # la porta e filtrata
+                return False
+
     else:
         return True
 
