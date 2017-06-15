@@ -27,7 +27,7 @@ def main():
             print (port,typePortScanning.result[port],"None")
 
 if __name__ == "__main__":
-    if os.geteuid == 0:
+    if os.getuid() == 0:
         main()
     else:
         print("You need to have root privileges to run this script.")
