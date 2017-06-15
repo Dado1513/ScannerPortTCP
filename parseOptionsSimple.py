@@ -21,10 +21,12 @@ def help():
         [usage] sudo python -p PORT --type=typeOfAttack <target>
 
         type:
-        {}
-    """.format(tipoAttacchi)
-
-
+            - SYN
+            - FIN/ACK
+            - ACK
+            - XmasTREE
+            - NULL
+    """
 
 
 

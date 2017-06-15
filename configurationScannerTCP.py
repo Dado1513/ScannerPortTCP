@@ -1,6 +1,6 @@
 destination=""
 numeroThread=5
-
+typeOfScanning="SYN"
 # TOP TEN PORTS TCP
            # port   # service name
 
