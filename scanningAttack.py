@@ -2,6 +2,7 @@ import parseOptionsSimple
 import configurationScannerTCP
 import typePortScanning
 import os
+import sys
 from scapy.all import *
 
 def main():
@@ -26,7 +27,7 @@ def main():
             print (port,typePortScanning.result[port],"None")
 
 if __name__ == "__main__":
-    if os.getuid == 0:
+    if os.geteuid == 0:
         main()
     else:
-        print("You need to have root privileges to run this script")
+        print("You need to have root privileges to run this script.")
