@@ -1,6 +1,6 @@
 ## Scanner port TCP service
 
-Usage 
+Usage
 sudo python scanningAttack.py -p nPort --type=typeOfAttack addressIP
 Require lib scapy
 Type Of Attack
@@ -27,3 +27,4 @@ NB if -p is not set, the ports examined are:
            135,    # msrpc
            25     # smtp
 
+NB if type is not set --> --type=SYN
