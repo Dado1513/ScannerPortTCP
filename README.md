@@ -13,7 +13,7 @@ Type Of Attack
 See file typeOfScanning for information of typeAttack
 
 Example
-sudo python scanningAttack.py -p 21,22,80 --type=SYN 192.168.1.80
+sudo python2.7 scanningAttack.py -p 21,22,80 --type=SYN 192.168.1.80
 
 NB if -p is not set, the ports examined are:
 	   80,     # http
